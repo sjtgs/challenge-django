@@ -37,6 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'challenge_app',
+    'accounts',
+    'crispy_forms',
+    'widget_tweaks',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +60,7 @@ ROOT_URLCONF = 'challenge_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,6 +75,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'challenge_django.wsgi.application'
 
+
+
+# Django Rest Framework 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+      'DEFAULT_AUTHENTICATION_CLASSES': (
+        #'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+    ),
+      'DEFAULT_PAGINATION_CLASS': 'website_app.pagination.ProductPagination',
+      "SEARCH_PARAM" : "search"
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -95,6 +115,17 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+
+
+
+
+# JWT_AUTH = {
+#     "JWT_RESPONSE_PAYLOAD_HANDLER":
+#     "challenge_django.utils.jwt_response_payload_handler",
+#     "JWT_EXPIRATION_DELTA": datetime.timedelta(seconds=30000),
+#     "JWT_ALLOW_REFRESH": True, #False
+# }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
