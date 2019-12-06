@@ -11,7 +11,7 @@ from django.db import models
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday =  models.DateField(null=True, blank=True)
-    email = models.CharField(max_length=100, unique=True)
+    telephone = models.IntegerField(max_length=100, unique=True)
     created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now=True)
 
