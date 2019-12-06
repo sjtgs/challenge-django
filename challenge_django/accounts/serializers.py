@@ -5,10 +5,9 @@ from .models import *
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = UserProfile
-        fields = ['birthdate','telephone']
+        fields = ['birthday','telephone']
         
 
 class UserSerializer(serializers.ModelSerializer):
@@ -33,7 +32,7 @@ class UserSerializer(serializers.ModelSerializer):
         user_profile = UserProfile.objects.create(
             user = user,
             telephone = user_profile_data['telephone'],
-            birthdate = user_profile_data['birthdate'],
+            birthday = user_profile_data['birthday'],
             
             #profile_images = profile_data['profile_images'],
             # etc...
