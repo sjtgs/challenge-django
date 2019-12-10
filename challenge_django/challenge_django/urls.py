@@ -2,13 +2,9 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib.auth import views as auth_views
-from account import views as accounts_views
-# from django.contrib.auth import views as auth_views
-# from account import views as accounts_views
-from productapp.views import *
-from storeapp.views import *
-from shopapp.views import *
-from account.views import *
+from accounts import views as accounts_views
+from accounts.views import *
+# from challenge_app.views import *
 from django.conf.urls.static import static
 from django.contrib import admin
 from rest_framework_jwt.views import obtain_jwt_token
@@ -68,5 +64,5 @@ urlpatterns += [
 ]
 
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'accounts',
     'crispy_forms',
     'widget_tweaks',
+    'registration',
     'rest_framework',
 )
 
@@ -106,13 +107,13 @@ REST_FRAMEWORK = {
         #'rest_framework.authentication.SessionAuthentication',
         "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
     ),
-      'DEFAULT_PAGINATION_CLASS': 'website_app.pagination.ProductPagination',
-      "SEARCH_PARAM" : "search"
+    #   'DEFAULT_PAGINATION_CLASS': 'challenge_app.pagination.ProductPagination',
+    #   "SEARCH_PARAM" : "search"
 }
 
 JWT_AUTH = {
     "JWT_RESPONSE_PAYLOAD_HANDLER":
-    "shopamate.utils.jwt_response_payload_handler",
+    "challenge_django.utils.jwt_response_payload_handler",
     "JWT_EXPIRATION_DELTA": datetime.timedelta(seconds=30000),
     "JWT_ALLOW_REFRESH": True, #False
 }
