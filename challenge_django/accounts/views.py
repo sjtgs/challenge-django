@@ -40,7 +40,7 @@ class UserUpdateView(UpdateView):
         return self.request.user
 
 
-class CreateUserView(CreateAPIView):
+class CreateUserProfileView(CreateAPIView):
     model = get_user_model()
     permission_classes = (AllowAny,)
     serializer_class = UserSerializer

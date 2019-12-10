@@ -60,7 +60,7 @@ urlpatterns = [
 urlpatterns += [
     #Authentication API
     url(r'^api/auth/token/$', obtain_jwt_token, name='auth_login_api'),
-    url(r'^api/auth/register/$', CreateUserView.as_view(),  name='auth_register_api'),
+    url(r'^api/auth/register/$', CreateUserProfileView.as_view(),  name='auth_register_api'),
     url(r'^api/auth/token/refresh/', refresh_jwt_token,name='refresh_token_api' ),
     url(r'^api-token-verify/', verify_jwt_token,name='verfiy' ),
  
