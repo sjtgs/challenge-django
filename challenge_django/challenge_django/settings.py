@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import datetime
 import os
+from django.core.exceptions import ImproperlyConfigured
+from django.contrib.messages import constants as messages
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -41,8 +45,11 @@ INSTALLED_APPS = (
     'accounts',
     'crispy_forms',
     'widget_tweaks',
+    'registration',
     'rest_framework',
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -77,19 +84,7 @@ WSGI_APPLICATION = 'challenge_django.wsgi.application'
 
 
 
-# Django Rest Framework 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',
-    ),
-      'DEFAULT_AUTHENTICATION_CLASSES': (
-        #'rest_framework.authentication.BasicAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
-        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
-    ),
-      'DEFAULT_PAGINATION_CLASS': 'website_app.pagination.ProductPagination',
-      "SEARCH_PARAM" : "search"
-}
+
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -99,6 +94,28 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+      'DEFAULT_AUTHENTICATION_CLASSES': (
+        #'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+    ),
+    #   'DEFAULT_PAGINATION_CLASS': 'challenge_app.pagination.ProductPagination',
+    #   "SEARCH_PARAM" : "search"
+}
+
+JWT_AUTH = {
+    "JWT_RESPONSE_PAYLOAD_HANDLER":
+    "challenge_django.utils.jwt_response_payload_handler",
+    "JWT_EXPIRATION_DELTA": datetime.timedelta(seconds=30000),
+    "JWT_ALLOW_REFRESH": True, #False
 }
 
 
@@ -115,17 +132,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-
-
-
-
-# JWT_AUTH = {
-#     "JWT_RESPONSE_PAYLOAD_HANDLER":
-#     "challenge_django.utils.jwt_response_payload_handler",
-#     "JWT_EXPIRATION_DELTA": datetime.timedelta(seconds=30000),
-#     "JWT_ALLOW_REFRESH": True, #False
-# }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
