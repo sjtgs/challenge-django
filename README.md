@@ -1,11 +1,9 @@
 # Challenge Django
 
-# INSTALLING AND RUNNING DJANGO-CHALLENGE APPLICATION
+### Installing & Running Django Challenge Application
 
 
-# INSTALLING 
-
-# Virtual Enviroment 
+### Virtual Enviroment 
 
 Install virtualenv via pip:
 ```
@@ -18,7 +16,7 @@ Test your installation:
 $ virtualenv --version
 ```
 
-# Basic Usage
+### Basic Usage
 
 -  Create a virtual environment for a project:
 ```
@@ -38,7 +36,7 @@ $ source venv/bin/activate
 $ deactivate
 ```
 
-# Installing Packages/Library 
+### Installing Packages/Library 
 
 -  Installing Packages / Library for the django_challenge 
 ```
@@ -47,7 +45,21 @@ $ pip install -r requirements.txt
 
 This will install all the necessary packages that are used within the Django application 
 
-# Running Django Challenge Application 
+## Django Challenge Make Migrations 
+-  Run django application with this command 
+```
+$ python manage.py makemigrations
+```  
+
+
+## Django Challenge Migration
+-  Run django application with this command 
+```
+$ python manage.py migrate
+```  
+
+
+## Running Django Challenge Application 
 
 -  Run django application with this command 
 ```
@@ -61,7 +73,7 @@ http://localhost:8000/api/
 ```
 
 
-# List of URLS associated with the Django Application 
+### List of URLS associated with the Django Application 
 
 ```
 1:  http://localhost:8000/api/admin/
@@ -73,13 +85,23 @@ http://localhost:8000/api/
 ```
 
 
-Register :
-http://localhost:8000/api/auth/register/
+## Screenshots 
+
+- Login :
+```
+http://localhost:8000/api/api/auth/token/
+```
+
+![Login](./images/login_restframework.png)
 
 
-![image info](./images/login_restframework.png)
+
+- Register :
+
+```
+http://localhost:8000/api/api/auth/register/
+```
+
+![Register](./images/register_restframework.png)
 
 
-**Free Software**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
