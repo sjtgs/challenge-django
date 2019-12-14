@@ -11,11 +11,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
         
 
 class UserSerializer(serializers.ModelSerializer):
-    user_profile = UserProfileSerializer(required=True)
+    userprofile = UserProfileSerializer(required=True)
 
     class Meta:
             model = User
-            fields = ['username', 'first_name', 'last_name', 'user_profile', 'email','password',]
+            fields = ['username', 'first_name', 'last_name', 'userprofile', 'email','password',]
 
 
 
@@ -28,15 +28,12 @@ class UserSerializer(serializers.ModelSerializer):
 
         )
 
-        user_profile_data = validated_data.pop('user_profile')
+        user_profile_data = validated_data.pop('userprofile')
         # create user profile
-        user_profile = UserProfile.objects.create(
+        profile = UserProfile.objects.create(
             user = user,
             telephone = user_profile_data['telephone'],
             birthday = user_profile_data['birthday'],
-            
-            #profile_images = profile_data['profile_images'],
-            # etc...
         )
 
         
