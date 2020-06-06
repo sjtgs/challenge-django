@@ -1,4 +1,4 @@
-Django==1.11
+Django==1.11.29
 virtualenv
 dj-database-url==0.3.0
 dj-static==0.0.6
